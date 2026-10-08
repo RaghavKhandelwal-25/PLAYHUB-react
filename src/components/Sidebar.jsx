@@ -1,10 +1,13 @@
-function Sidebar() {
+function Sidebar({sidebarOpen, setSidebarOpen}) {
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
 
       <div className="sidebar-logo">
 
-        <div id="sidebar-menu-btn">
+        <div 
+          id="sidebar-menu-btn"
+          onClick={() => setSidebarOpen(false)}
+        >
           <i className="fa-solid fa-bars icon"></i>
         </div>
 

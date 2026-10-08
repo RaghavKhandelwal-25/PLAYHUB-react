@@ -1,23 +1,35 @@
+import { useState } from "react";
+
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ProfileMenu from "./components/ProfileMenu";
 import Sidebar from "./components/Sidebar";
-// import Overlay from "./components/Overlay";
+import Overlay from "./components/Overlay";
 import Hero from "./components/Hero";
 import GameSection from "./components/GameSection";
 import Footer from "./components/Footer";
 
 function App() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="all-content">
 
       <header>
-        <Navbar />
+        <Navbar setSidebarOpen={setSidebarOpen}/>
+
         <ProfileMenu />
-        <Sidebar />
+
+        <Sidebar
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}        
+        />
       </header>
 
-      {/* <Overlay /> */}
+      <Overlay
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
 
       <Hero />
 

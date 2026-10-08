@@ -1,8 +1,11 @@
-function Navbar() {
+function Navbar({setSidebarOpen}) {
   return (
     <div className="navbar">
 
-      <div id="menu-btn">
+      <div 
+      id="menu-btn"
+      onClick={() => setSidebarOpen(true)}
+      >
         <i className="fa-solid fa-bars"></i>
       </div>
 
