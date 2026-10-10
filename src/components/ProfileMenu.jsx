@@ -1,6 +1,9 @@
-function ProfileMenu() {
+function ProfileMenu({profileOpen}) {
   return (
-    <div className="profile-card" id="player_menu">
+    <div
+      className={`profile-card ${profileOpen ? "open" : ""}`}
+      id="player_menu"
+    >
 
       <div id="curr-player">
         Player 1

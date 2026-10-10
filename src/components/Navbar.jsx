@@ -1,4 +1,4 @@
-function Navbar({setSidebarOpen}) {
+function Navbar({setSidebarOpen, setProfileOpen}) {
   return (
     <div className="navbar">
 
@@ -18,7 +18,10 @@ function Navbar({setSidebarOpen}) {
         <p id="mainBalance">200</p>
       </div>
 
-      <div id="profile">
+      <div
+        id="profile"
+        onClick={() => setProfileOpen(prev => !prev)}
+      >
         <i className="fa-solid fa-user"></i>
       </div>
 

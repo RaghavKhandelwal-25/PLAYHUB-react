@@ -11,14 +11,20 @@ import Footer from "./components/Footer";
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   return (
     <div className="all-content">
 
       <header>
-        <Navbar setSidebarOpen={setSidebarOpen}/>
+        <Navbar
+          setSidebarOpen={setSidebarOpen}
+          setProfileOpen={setProfileOpen}
+        />
 
-        <ProfileMenu />
+        <ProfileMenu
+         profileOpen={profileOpen} 
+        />
 
         <Sidebar
           sidebarOpen={sidebarOpen}
