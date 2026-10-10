@@ -5,7 +5,8 @@ function GameCard({
   description,
   entryCost,
   winAmount,
-  gradient
+  gradient,
+  onPlay
 }) {
   return (
     <div className={`${gameClass} BOX`}>
@@ -39,15 +40,13 @@ function GameCard({
         </div>
       </div>
 
-      <a
-        href="#"
+      <button
         className="game-entry"
-        style={{
-          background: gradient
-        }}
+        style={{ background: gradient }}
+        onClick={onPlay}
       >
         Play Now
-      </a>
+      </button>
 
       <p className="win">
         Win: {winAmount} coins

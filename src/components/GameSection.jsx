@@ -1,6 +1,6 @@
 import GameCard from "./GameCard";
 
-function GameSection() {
+function GameSection({handleGameEntry}) {
   return (
     <div className="middle2">
 
@@ -12,6 +12,7 @@ function GameSection() {
         entryCost="300"
         winAmount="600"
         gradient="linear-gradient(to right, #ef4444, #b91c1c)"
+        onPlay={() => handleGameEntry(300, "/rps")}
       />
 
       <GameCard
@@ -22,6 +23,7 @@ function GameSection() {
         entryCost="100"
         winAmount="200"
         gradient="linear-gradient(to right, #eab308, #a16207)"
+        onPlay={() => handleGameEntry(100, "/coinflip")}
       />
 
       <GameCard
@@ -32,6 +34,7 @@ function GameSection() {
         entryCost="500"
         winAmount="1000"
         gradient="linear-gradient(to right, #22c55e, #15803d)"
+        onPlay={() => handleGameEntry(500, "/ttt")}
       />
 
       <GameCard
@@ -42,6 +45,7 @@ function GameSection() {
         entryCost="200"
         winAmount="400"
         gradient="linear-gradient(to right, #a855f7, #7e22ce)"
+        onPlay={() => handleGameEntry(200, "/7up")}
       />
 
     </div>

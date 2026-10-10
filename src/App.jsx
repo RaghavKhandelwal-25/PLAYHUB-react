@@ -24,6 +24,26 @@ function App() {
   player => player.id === currentPlayerId
   );
 
+  function updateBalance(newBalance) {
+    setPlayers(prevPlayers =>                 //prevPlayers represents the previous/current state value React provides to the updater function
+      prevPlayers.map(player =>               //Take the latest players array, calculate an updated version of it, and save that version as the new state
+        player.id === currentPlayerId
+          ? { ...player, balance: newBalance }    //If this is the current player, return a new object with the updated balance
+          : player                                //Otherwise, return the original player object unchanged.
+      ));
+  }
+
+  function handleGameEntry(entryCost, gamePath) {
+  if (currentPlayer.balance < entryCost) {
+    alert(`You need at least ${entryCost} coins to play this game.`);
+    return;
+  }
+
+  updateBalance(currentPlayer.balance - entryCost);
+
+  console.log(`Entering ${gamePath}`);
+}
+
   return (
     <div className="all-content">
 
@@ -32,6 +52,7 @@ function App() {
           setSidebarOpen={setSidebarOpen}
           setProfileOpen={setProfileOpen}
           balance={currentPlayer.balance}
+          updateBalance={updateBalance}
         />
 
         <ProfileMenu
@@ -54,7 +75,7 @@ function App() {
 
       <Hero />
 
-      <GameSection />
+      <GameSection handleGameEntry={handleGameEntry} />
 
       <Footer />
 

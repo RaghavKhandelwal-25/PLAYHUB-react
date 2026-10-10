@@ -1,4 +1,4 @@
-function Navbar({setSidebarOpen, setProfileOpen, balance}) {
+function Navbar({setSidebarOpen, setProfileOpen, balance, updateBalance}) {
   return (
     <div className="navbar">
 

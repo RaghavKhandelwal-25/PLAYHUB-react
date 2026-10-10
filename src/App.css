@@ -201,6 +201,19 @@
     transform: scale(1.02);
 }
 
+.game-entry {
+  display: block;
+  margin-top: 20px;
+  width: 90%;
+  padding: 8px;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
 /*-----------------------------------MIDDLE1---------------------*/
 .middle1{
     height: 200px;
@@ -257,7 +270,7 @@
     border: 2px solid white;
 }
 
-a{
+/* a{
     display: block;
     margin-top: 20px;
     width: 90%;
@@ -267,7 +280,7 @@ a{
     text-decoration: none;
     color: white;
     font-weight: 600;
-}
+} */
 
 .box-img{
     
