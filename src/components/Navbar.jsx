@@ -1,4 +1,4 @@
-function Navbar({setSidebarOpen, setProfileOpen}) {
+function Navbar({setSidebarOpen, setProfileOpen, balance}) {
   return (
     <div className="navbar">
 
@@ -15,7 +15,7 @@ function Navbar({setSidebarOpen, setProfileOpen}) {
 
       <div id="balance">
         <i className="fa-solid fa-money-bill-1"></i>
-        <p id="mainBalance">200</p>
+        <p id="mainBalance">{balance}</p>
       </div>
 
       <div
