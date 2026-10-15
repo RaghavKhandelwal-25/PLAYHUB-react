@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect} from "react";
 
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -12,11 +12,24 @@ import Footer from "./components/Footer";
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [players, setPlayers] = useState([
-  { id: 1, name: "Player 1", balance: 500 },
-  { id: 2, name: "Player 2", balance: 1000 },
-  { id: 3, name: "Player 3", balance: 300 }
-  ]);
+  
+  const [players, setPlayers] = useState(() => {
+    const savedPlayers = localStorage.getItem("players");
+
+    if (savedPlayers) {
+      return JSON.parse(savedPlayers);                  //JSON.parse() converts that string back into an array of objects.
+    }
+
+    return [
+      { id: 1, name: "Player 1", balance: 1000 },
+      { id: 2, name: "Player 2", balance: 2500 },
+      { id: 3, name: "Player 3", balance: 500 }
+    ];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("players", JSON.stringify(players));       //JSON.stringify(players) converts the players array into a string.
+  }, [players]);
 
   const [currentPlayerId, setCurrentPlayerId] = useState(1);
 
@@ -34,15 +47,27 @@ function App() {
   }
 
   function handleGameEntry(entryCost, gamePath) {
-  if (currentPlayer.balance < entryCost) {
-    alert(`You need at least ${entryCost} coins to play this game.`);
-    return;
+    if (currentPlayer.balance < entryCost) {
+      alert(`You need at least ${entryCost} coins to play this game.`);
+      return;
+    }
+
+    updateBalance(currentPlayer.balance - entryCost);
+
+    console.log(`Entering ${gamePath}`);
   }
 
-  updateBalance(currentPlayer.balance - entryCost);
+  function addPlayer() {
+    const newPlayer = {
+      id: Date.now(),
+      name: `Player ${players.length + 1}`,
+      balance: 1000
+    };
 
-  console.log(`Entering ${gamePath}`);
-}
+    setPlayers(prevPlayers => [...prevPlayers, newPlayer]);
+    setCurrentPlayerId(newPlayer.id);
+    setProfileOpen(false);
+  }
 
   return (
     <div className="all-content">
@@ -60,6 +85,7 @@ function App() {
           players={players}
           currentPlayer={currentPlayer}
           setCurrentPlayerId={setCurrentPlayerId}
+          addPlayer={addPlayer}
         />
 
         <Sidebar

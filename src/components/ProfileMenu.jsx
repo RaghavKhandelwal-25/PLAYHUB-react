@@ -1,4 +1,4 @@
-function ProfileMenu({profileOpen,players,currentPlayer,setCurrentPlayerId}) {
+function ProfileMenu({profileOpen,players,currentPlayer,setCurrentPlayerId, addPlayer}) {
 
   return (
     <div
@@ -25,7 +25,7 @@ function ProfileMenu({profileOpen,players,currentPlayer,setCurrentPlayerId}) {
             </button>
           ))}
 
-        <button className="add_player">
+        <button className="add_player" onClick={addPlayer}>
           Add Player
         </button>
 
