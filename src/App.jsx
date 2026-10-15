@@ -1,15 +1,30 @@
 import { useState, useEffect} from "react";
 
+import { BrowserRouter, Routes, Route, useNavigate} from "react-router-dom";
+
+import RPS from "./pages/RPS";
+import CoinFlip from "./pages/CF";
+import TicTacToe from "./pages/TTT";
+import SevenUp from "./pages/SevenUp";
+import Home from "./pages/Home";
+
 import "./App.css";
 import Navbar from "./components/Navbar";
 import ProfileMenu from "./components/ProfileMenu";
 import Sidebar from "./components/Sidebar";
 import Overlay from "./components/Overlay";
-import Hero from "./components/Hero";
-import GameSection from "./components/GameSection";
-import Footer from "./components/Footer";
 
 function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}
+
+function AppContent() {
+  const navigate = useNavigate();
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   
@@ -54,7 +69,7 @@ function App() {
 
     updateBalance(currentPlayer.balance - entryCost);
 
-    console.log(`Entering ${gamePath}`);
+    navigate(gamePath);
   }
 
   function addPlayer() {
@@ -99,12 +114,25 @@ function App() {
         setSidebarOpen={setSidebarOpen}
       />
 
-      <Hero />
+      <Routes>
+        <Route
+          path="/"
+          element={<Home handleGameEntry={handleGameEntry} />}
+        />
 
-      <GameSection handleGameEntry={handleGameEntry} />
-
-      <Footer />
-
+        <Route path="/rps" element={<RPS />} />
+        <Route
+          path="/coinflip"
+          element={
+            <CoinFlip
+              balance={currentPlayer.balance}
+              updateBalance={updateBalance}
+            />
+          }
+        />
+        <Route path="/ttt" element={<TicTacToe />} />
+        <Route path="/7up" element={<SevenUp />} />
+      </Routes>
     </div>
   );
 }
