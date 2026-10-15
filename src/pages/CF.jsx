@@ -8,12 +8,12 @@ function CoinFlip({ balance, updateBalance }) {
   const [isFlipping, setIsFlipping] = useState(false);
   const [result, setResult] = useState(null);
 
-  const intervalRef = useRef(null);
-  const timeoutRef = useRef(null);
+  const intervalRef = useRef(null);     //stores the timer that repeatedly changes the coin's letter.
+  const timeoutRef = useRef(null);      //stores the timer that ends the animation after two seconds.
 
   useEffect(() => {
     return () => {
-      clearInterval(intervalRef.current);
+      clearInterval(intervalRef.current);       //clearInterval stops the repeated letter changes.
       clearTimeout(timeoutRef.current);
     };
   }, []);
@@ -38,10 +38,7 @@ function CoinFlip({ balance, updateBalance }) {
 
       const won = userChoice === computerChoice;
 
-      setResult({
-        won,
-        computerChoice
-      });
+      setResult({ won, computerChoice});
 
       if (won) {
         updateBalance(balance + 200);
