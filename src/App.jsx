@@ -120,7 +120,15 @@ function AppContent() {
           element={<Home handleGameEntry={handleGameEntry} />}
         />
 
-        <Route path="/rps" element={<RPS />} />
+        <Route
+          path="/rps"
+          element={
+            <RPS
+              balance={currentPlayer.balance}
+              updateBalance={updateBalance}
+            />
+          }
+        />
         <Route
           path="/coinflip"
           element={

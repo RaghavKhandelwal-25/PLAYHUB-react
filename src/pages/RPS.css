@@ -1,0 +1,141 @@
+
+.rps-page {
+  min-height: calc(100vh - 60px);
+  padding: 20px 16px;
+  background: linear-gradient(to bottom right, #111827, #581c87, #111827);
+  color: white;
+  text-align: center;
+}
+
+.rps-title {
+  font-size: 42px;
+  color: #ffd700;
+  margin: 20px 0;
+}
+
+.rps-game-area {
+  width: min(90%, 900px);
+  min-height: 600px;
+  margin: 20px auto;
+  padding: 20px 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.rps-round {
+  color: white;
+  font-size: 36px;
+  padding: 15px;
+}
+
+.rps-choices {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+  min-height: 180px;
+}
+
+.rps-choice {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: black;
+  color: white;
+  font-size: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.rps-choice:hover:not(:disabled),
+.rps-choice.selected {
+  background: #581c87;
+  border-color: #ffd700;
+  transform: scale(1.05);
+}
+
+.rps-choice:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.rps-player-choice {
+  font-size: 20px;
+  margin: 15px 0 5px;
+}
+
+.rps-challenge,
+.rps-next button {
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #a855f7, #7e22ce);
+  cursor: pointer;
+}
+
+.rps-challenge {
+  min-width: 250px;
+  max-width: 100%;
+  margin-top: 10px;
+}
+
+.rps-challenge.win {
+  background: linear-gradient(to right, #22c55e, #15803d);
+}
+
+.rps-challenge.lose {
+  background: linear-gradient(to right, #ef4444, #b91c1c);
+}
+
+.rps-challenge.draw {
+  background: linear-gradient(to right, #eab308, #a16207);
+}
+
+.rps-challenge:disabled {
+  cursor: not-allowed;
+}
+
+.rps-scores {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-top: 30px;
+  font-size: 25px;
+}
+
+.rps-scores p {
+  font-size: 40px;
+}
+
+.rps-next button {
+  margin-top: 25px;
+}
+
+@media (max-width: 480px) {
+  .rps-title {
+    font-size: 30px;
+  }
+
+  .rps-game-area {
+    width: 100%;
+  }
+
+  .rps-choice {
+    width: 85px;
+    height: 85px;
+    font-size: 35px;
+  }
+
+  .rps-choices {
+    gap: 8px;
+  }
+
+  .rps-scores {
+    gap: 40px;
+  }
+}
