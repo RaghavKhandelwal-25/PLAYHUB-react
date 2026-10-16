@@ -1,0 +1,176 @@
+
+.sevenup-page {
+  min-height: calc(100vh - 60px);
+  padding: 20px 16px;
+  background: linear-gradient(to bottom right, #111827, #581c87, #111827);
+  color: white;
+}
+
+.sevenup-title {
+  text-align: center;
+  font-size: 46px;
+  font-weight: bold;
+  color: #ffd700;
+  margin: 20px 0;
+}
+
+.sevenup-game-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(90%, 850px);
+  min-height: 600px;
+  margin: 20px auto;
+  padding: 20px 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sevenup-heading {
+  text-align: center;
+  font-size: 30px;
+  padding: 20px;
+}
+
+.sevenup-dice {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.sevenup-die {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  margin-top: 25px;
+  border-radius: 8px;
+  border: 1px solid white;
+  background: grey;
+  color: black;
+  font-size: 80px;
+}
+
+.sevenup-die.rolling {
+  animation: sevenup-roll 0.8s ease-in-out;
+}
+
+@keyframes sevenup-roll {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(30deg) scale(1.1); }
+  50% { transform: rotate(-30deg) scale(1.1); }
+  75% { transform: rotate(15deg) scale(1.05); }
+  100% { transform: rotate(0deg) scale(1); }
+}
+
+.sevenup-subheading {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.sevenup-predictions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.sevenup-prediction {
+  width: 140px;
+  min-height: 40px;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background: grey;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sevenup-prediction:hover:not(:disabled),
+.sevenup-prediction.selected {
+  background: white;
+  transform: scale(1.05);
+}
+
+.sevenup-prediction:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.sevenup-roll-button,
+.sevenup-again-button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sevenup-roll-button {
+  width: 150px;
+  margin-top: 30px;
+}
+
+.sevenup-again-button {
+  min-width: 150px;
+  font-size: 18px;
+  margin-top: 15px;
+}
+
+.sevenup-roll-button:hover:not(:disabled),
+.sevenup-again-button:hover {
+  background: #16a34a;
+}
+
+.sevenup-roll-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.sevenup-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.sevenup-total {
+  font-size: 25px;
+  padding: 10px;
+  margin-top: 15px;
+}
+
+.sevenup-winner {
+  font-size: 25px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+.sevenup-winner.won {
+  color: #4ade80;
+}
+
+.sevenup-winner.lost {
+  color: #f87171;
+}
+
+@media (max-width: 520px) {
+  .sevenup-title {
+    font-size: 36px;
+  }
+
+  .sevenup-game-area {
+    width: 100%;
+  }
+
+  .sevenup-prediction {
+    width: 120px;
+  }
+}
