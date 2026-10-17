@@ -138,7 +138,15 @@ function AppContent() {
             />
           }
         />
-        <Route path="/ttt" element={<TicTacToe />} />
+        <Route
+          path="/ttt"
+          element={
+            <TicTacToe
+              balance={currentPlayer.balance}
+              updateBalance={updateBalance}
+            />
+          }
+        />
         <Route
           path="/7up"
           element={
